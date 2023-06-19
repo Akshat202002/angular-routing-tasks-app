@@ -1,0 +1,10 @@
+<h2>Date-Time Parsing</h2>
+
+<h3>Input Date-Time:</h3>
+<input type="text" [(ngModel)]="dateTimeString" placeholder="Enter a date-time string">
+
+<h3>Parsed Date-Time:</h3>
+<p>Medium Format: {{ dateTimeString | date: 'medium' }}</p>
+<p>Short Format: {{ dateTimeString | date: 'short' }}</p>
+<p>Only Hour: {{ dateTimeString | date: 'HH:mm' }}</p>
+<p>Only Date: {{ dateTimeString | date: 'dd MMM yyyy' }}</p>

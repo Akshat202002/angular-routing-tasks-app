@@ -1,0 +1,23 @@
+<!-- task1.component.html -->
+<input value="" placeholder="use below url" [(ngModel)]="name">
+
+<button (click)="test()" type="button" name="button">Test</button>
+
+<div class="card-container">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let user of (users$ | async)">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">{{ user.login }}</h5>
+          <p class="card-text">{{ user.html_url }}</p>
+          <a [href]="user.html_url" target="_blank" class="btn btn-primary">View Profile</a>
+          <ul>
+            <li *ngFor="let repo of user.repos">
+              <a [href]="repo.html_url" target="_blank">{{ repo.name }}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
