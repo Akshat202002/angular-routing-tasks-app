@@ -8,6 +8,9 @@ import { Task4Component } from './task4/task4.component';
 import { Component1Component } from './task4/components/component1/component1.component';
 import { Component2Component } from './task4/components/component2/component2.component';
 import { Component3Component } from './task4/components/component3/component3.component';
+import { Task5Component } from './task5/task5.component';
+import { Task5aComponent } from './task5/task5a/task5a.component';
+import { Task5aiComponent } from './task5/task5a/task5ai/task5ai.component';
 const routes: Routes = [
   {
     path: '', redirectTo: '/task1', pathMatch: 'full'
@@ -22,16 +25,31 @@ const routes: Routes = [
     path: 'task3', component:Task3Component
   },
   {
-    path: 'task4', component:Task4Component, children: [
+    path: 'task4',
+    loadChildren: () => import('./task4/task4.module').then((m)=>m.Task4Module)
+  },
+  // {
+  //   path: 'task4', component:Task4Component, children: [
 
+  //     {
+  //       path: 'component1', component: Component1Component
+  //     },
+  //     {
+  //       path: 'component2', component: Component2Component
+  //     },
+  //     {
+  //       path: 'component3', component: Component3Component
+  //     }
+  //   ]
+  // },
+  {
+    path: 'task5', component: Task5Component, children: [
       {
-        path: 'component1', component: Component1Component
-      },
-      {
-        path: 'component2', component: Component2Component
-      },
-      {
-        path: 'component3', component: Component3Component
+        path: 'task5a', component: Task5aComponent, children: [
+          {
+            path: 'task5ai', component: Task5aiComponent
+          }
+        ]
       }
     ]
   },
@@ -46,4 +64,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [Task1Component, Task2Component, Task3Component, PageNotFoundComponent];
+export const routingComponents = [Task1Component, Task2Component, Task3Component, Task5Component, Task5aComponent, Task5aiComponent, PageNotFoundComponent];
